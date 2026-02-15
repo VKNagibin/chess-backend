@@ -1,17 +1,16 @@
 {
   "name": "chess_engine",
-  "version": "1.0.0",
+  "version": "1.0.1",
   "author": "VKNagibin",
   "type": "commonjs",
   "main": "index.js",
   "scripts": {
-    "lint": "eslint src/**/*.{js,ts}",
-    "lint:fix": "eslint src/**/*.{js,ts} --fix",
-    "prettier": "prettier --write src/**/*.{js,ts}",
-    "type-check": "tsc --noEmit",
-    "build": "tsc",
+    "lint": "eslint --ext .jsx,.js,.ts,.tsx",
+    "lint-fix": "eslint --ext .jsx,.js,.ts,.tsx --fix",
+    "prettier": "prettier --loglevel warn --write \"./**/*.{js,jsx,ts,tsx,css,md,json}\" ",
+    "prepare": "husky",
     "start": "node dist/index.js",
-    "dev": "nodemon --exec src/index.js",
+    "dev": "nodemon src/index.js",
     "clean": "rm -rf dist"
   },
   "dependencies": {

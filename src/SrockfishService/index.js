@@ -27,7 +27,7 @@ class StockfishService {
     return new Promise((resolve, reject) => {
       const engine = spawn(this.getStockfishPath());
 
-      engine.stdout.on('data', data => {
+      engine.stdout.on('data', (data) => {
         if (data.includes('uciok')) {
           engine.stdin.write(`setoption name Skill Level value ${configs.skill}\n`);
           engine.stdin.write(`setoption name Contempt value ${configs.contempt}\n`);
@@ -47,11 +47,11 @@ class StockfishService {
       });
       engine.stdin.write(`uci\n`);
 
-      engine.stderr.on('data', data => {
+      engine.stderr.on('data', (data) => {
         console.error('Stockfish error:', data.toString());
       });
 
-      engine.on('error', error => {
+      engine.on('error', (error) => {
         reject(new Error(`Stockfish failed to start: ${error.message}`));
       });
 

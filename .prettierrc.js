@@ -1,14 +1,8 @@
 module.exports = {
-  "semi": true,
-  "trailingComma": "es5",
-  "singleQuote": true,
-  "printWidth": 100,
-  "tabWidth": 2,
-  "useTabs": false,
-  "endOfLine": "lf", 
-  "arrowParens": "avoid",
-  "bracketSpacing": true,
-  "bracketSameLine": false,
-  "quoteProps": "as-needed",
-  "proseWrap": "preserve"
-}
+  semi: true,
+  trailingComma: 'all',
+  singleQuote: true,
+  printWidth: 90,
+  tabWidth: 2,
+  endOfLine: 'auto',
+};

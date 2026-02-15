@@ -1,7 +1,10 @@
 const express = require('express');
 const cors = require('cors');
 const { stockfishService } = require('./SrockfishService');
-const { DifficultyLevels, checkValidDifficulty } = require('./SrockfishService/difficulty');
+const {
+  DifficultyLevels,
+  checkValidDifficulty,
+} = require('./SrockfishService/difficulty');
 
 const app = express();
 
@@ -50,7 +53,7 @@ app.post('/api/best-move', async (req, res) => {
   }
 });
 
-app.use(error => {
+app.use((error) => {
   console.error('Error:', error);
   // res.status(500).json({
   //   error: error.message,

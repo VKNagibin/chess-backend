@@ -1,77 +1,58 @@
-
 module.exports = {
   root: true,
   parser: '@typescript-eslint/parser',
   parserOptions: {
-    ecmaVersion: 2022, 
+    ecmaVersion: 2020,
     sourceType: 'module',
+    ecmaFeatures: {
+      jsx: true,
+    },
   },
   settings: {
+    react: {
+      version: 'detect',
+    },
     'import/resolver': {
       node: {
         paths: ['src'],
-        extensions: ['.js', '.ts', '.json'],
+        extensions: ['.js', '.jsx', '.ts', '.tsx'],
       },
     },
   },
   env: {
-    browser: false,
-    amd: false,     
-    node: true,     
-    es2022: true,   
+    browser: true,
+    amd: true,
+    node: true,
   },
   extends: [
     'eslint:recommended',
     'plugin:@typescript-eslint/recommended',
+    'plugin:react/recommended',
+    'plugin:jsx-a11y/recommended',
     'plugin:prettier/recommended',
-    'plugin:node/recommended', 
   ],
-  plugins: [
-    'simple-import-sort', 
-    'prettier',
-    '@typescript-eslint',
-  ],
+  plugins: ['simple-import-sort', 'prettier'],
   rules: {
-    'prefer-const': 'error', 
-    'no-console': 'warn',    
-    'no-unused-vars': 'off', 
-    
-    '@typescript-eslint/no-explicit-any': 'warn',
-    '@typescript-eslint/no-unused-vars': ['error', { 
-      'argsIgnorePattern': '^_',
-      'varsIgnorePattern': '^_' 
-    }],
-    '@typescript-eslint/explicit-function-return-type': 'off',
-    '@typescript-eslint/explicit-module-boundary-types': 'off',
-    '@typescript-eslint/no-non-null-assertion': 'warn',
-    '@typescript-eslint/ban-ts-comment': 'warn',
-    
-    'node/no-unsupported-features/es-syntax': 'off',
-    'node/no-missing-import': 'off', 
-    'node/no-unpublished-import': 'off',
-    'node/no-unpublished-require': 'off',
-    'node/shebang': 'off',
-    
+    'prefer-const': 'off',
+    '@typescript-eslint/no-var-requires': 'off',
+    '@typescript-eslint/no-explicit-any': 'off',
+    '@typescript-eslint/no-unused-vars': 'off',
     'prettier/prettier': ['error', {}, { usePrettierrc: true }],
-    
+    'react/react-in-jsx-scope': 'off',
+    'jsx-a11y/accessible-emoji': 'off',
+    'react/prop-types': 'off',
+    '@typescript-eslint/ban-ts-comment': 'off',
+    '@typescript-eslint/explicit-function-return-type': 'off',
+    '@typescript-eslint/no-non-null-assertion': 'off',
     'simple-import-sort/imports': 'error',
     'simple-import-sort/exports': 'error',
-    
-    'no-process-exit': 'error',
-    'no-sync': 'warn',
+    'jsx-a11y/anchor-is-valid': [
+      'error',
+      {
+        components: ['Link'],
+        specialLink: ['hrefLeft', 'hrefRight'],
+        aspects: ['invalidHref', 'preferButton'],
+      },
+    ],
   },
-  overrides: [
-    {
-      files: ['**/*.js'],
-      rules: {
-        '@typescript-eslint/no-var-requires': 'off',
-      },
-    },
-    {
-      files: ['**/*.test.ts', '**/*.spec.ts'],
-      env: {
-        jest: true,
-      },
-    },
-  ],
 };
